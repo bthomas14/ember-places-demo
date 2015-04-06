@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+  {{!view 'select' content=model.locations value=selectedLocation optionValuePath="content.id" optionLabelPath="content.name"}}
+  {{!#if selectedLocation}}
+    {{!g-map lat=selectedLocation.lat lng=selectedLocation.lng}}
+  {{!/if}}
+
+  {{g-map}}
+
+  {{!input type="text" value=keyword}}
+  <!--<button {{action "getPlaces"}}>Go</button>-->
+</div>
+
+{{outlet}}

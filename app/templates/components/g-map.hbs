@@ -1,0 +1,38 @@
+<div id="gmap_canvas"></div>
+
+<div class="actions">
+  <!--
+    <div class="button">
+        <label for="gmap_where">Where:</label>
+        {{!input type="text" value=gmap_where id="gmap_where" action=findAddress}}
+    </div>
+  -->
+    <div class="button">
+        <label for="keyword">Search For:</label>
+        {{input type="text" value=keyword id="keyword"}}
+    </div>
+    <!--
+    <div class="button">
+        <label for="gmap_type">Type:</label>
+        {{!view 'select' id="gmap_type" content=typeOptions value=gmap_type}}
+    </div>
+    <div class="button">
+        <label for="gmap_radius">Radius:</label>
+        {{!view 'select' id="gmap_radius" content=radiusOptions value="gmap_radius"}}
+    </div>
+    -->
+    {{input type="hidden" value=40.7143528 id="lat"}}
+    {{input type="hidden" value=-74.0059731 id="lng"}}
+    <div id="button1" class="button" {{action 'findPlaces'}}>Search for objects</div>
+</div>
+
+<p id="listing">{{listing.name}}</p>
+<div id="places">
+  <ul>
+    {{#each li in listing}}
+      <li>{{listing.name}}</li>
+    {{else}}
+      <li>There were no listings for this query.</li>
+    {{/each}}
+  </ul>
+</div>

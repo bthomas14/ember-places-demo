@@ -12,6 +12,15 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+    contentSecurityPolicy: {
+      'default-src': "'self' 'unsafe-eval' *.google.com",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.googleapis.com *.gstatic.com/", // Allow scripts from https://cdn.mxpnl.com
+      'font-src': "'self' 'unsafe-eval' *.gstatic.com *.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
+      'connect-src': "'self' 'unsafe-eval' maps.googleapis.com custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+      'img-src': "'self' *.googleapis.com *.gstatic.com *.google.com",
+      'style-src': "'self' 'unsafe-inline' *.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
+      'media-src': "'self'"
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
