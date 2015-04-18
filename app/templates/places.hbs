@@ -1,0 +1,22 @@
+<!--
+<div>
+{{!view 'places-input' value=keyword class="controls" type="text"}}
+</div>
+
+
+{{!view 'my-input' value=keyword inputDidChange=nameDidChange}}
+{{!input type="text" value=keyword}}
+<button type="submit" {{action 'search' keyword}}> Go </button>
+
+<ul>
+</ul>
+
+-->
+<h2 id="title">My Map Component</h2>
+{{view 'select' content=model.locations value=selectedLocation optionLabelPath="content.name"}}
+
+{{#if selectedLocation}}
+  {{google-map latitude=selectedLocation.latitude longitude=selectedLocation.longitude}}
+{{/if}}
+
+{{outlet}}

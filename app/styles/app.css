@@ -6,9 +6,9 @@
 
 #gmap_canvas {
   display: block;
-    height: 700px;
-    position: relative;
-    width: 900px;
+  position: relative;
+  width: 400px;
+  height: 400px;
 }
 .actions {
     background-color: #FFFFFF;

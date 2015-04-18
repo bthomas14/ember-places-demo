@@ -1,11 +1,10 @@
 import Ember from 'ember';
 /* global google */
 
-var keyword = null;
-var service = null;
-var listing = [],
+//var keyword = null;
 
 export default Ember.Component.extend({
+  /*
   geocoder: null,
   center: null,
   map: null,
@@ -17,7 +16,7 @@ export default Ember.Component.extend({
 
   // initialize Geocoder
   insertMap: function() {
-    var container = this.$("#gmap_canvas");
+    var container = this.$("#canvas");
 
     this.set('geocoder', new google.maps.Geocoder());
 
@@ -42,15 +41,12 @@ export default Ember.Component.extend({
   returnPlaces: function(results, status) {
     console.log('in returnPlaces()');
 
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      console.log("places status => " + google.maps.places.PlacesServiceStatus.OK)
-      console.log("results array length => " + results.length);
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-      //var locs = new Array();
+      var listing = [];
       for (var i = 0; i < results.length; i++) {
         var mylisting = results[i];
-        console.log('mylisting => ' + mylisting.name);
-        console.log('mylisting type => ' + mylisting.types);
+
         if (results[i] == null) {
           console.log('no results');
           break;
@@ -64,10 +60,8 @@ export default Ember.Component.extend({
         //bounds.extend(loc);
         //var listing = new google.maps.places(mylisting.name, mylisting.address);
 
-        listing.pushObject({name: mylisting.name, types: mylisting.types});
-        console.log('listing => ' + listing.list.name);
+        listing.pushObject(Ember.Object.create({ name: mylisting.name }));
       }
-      return listing;
     }
   },
 
@@ -94,5 +88,5 @@ export default Ember.Component.extend({
         service.nearbySearch(request, this.returnPlaces);
     },
   },
-
+  */
 });

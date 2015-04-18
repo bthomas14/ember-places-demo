@@ -12,11 +12,12 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+    contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
     contentSecurityPolicy: {
-      'default-src': "'self' 'unsafe-eval' *.google.com",
-      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.google.com *.googleapis.com *.gstatic.com/", // Allow scripts from https://cdn.mxpnl.com
+      'default-src': "'self' 'unsafe-eval' http://localhost:4200 *.google.com",
+      'script-src': "'self' 'unsafe-eval' http://localhost:4200 'unsafe-inline' *.google.com *.googleapis.com *.gstatic.com/", // Allow scripts from https://cdn.mxpnl.com
       'font-src': "'self' 'unsafe-eval' *.gstatic.com *.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' 'unsafe-eval' maps.googleapis.com custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
+      'connect-src': "'self' 'unsafe-inline' *", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
       'img-src': "'self' *.googleapis.com *.gstatic.com *.google.com",
       'style-src': "'self' 'unsafe-inline' *.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"
@@ -30,10 +31,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+     ENV.APP.LOG_ACTIVE_GENERATION = true;
+     ENV.APP.LOG_TRANSITIONS = true;
+     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {

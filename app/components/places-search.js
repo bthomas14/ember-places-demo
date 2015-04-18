@@ -3,37 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   map: null,
   infowindow: null,
-  /*
-  mapsCallback: function() {
-    $.ajax ({
-        url: "https://maps.googleapis.com/maps/api/place/nearbysearch/output?",
-        type: 'GET',
-        parameters:,
-        data: {
-          name: this.get('bizName'),
-          address: this.get('bizAddress'),
-          city: this.get('bizCity'),
-          phone: this.get('bizPhone'),
-          desc: this.get('bizDesc'),
-          ratingStars: this.get('ratingStars'),
-          reviewText: this.get('reviewText'),
-          username: this.session.get('full_name')
-          success: function(response) {
-            console.log("in notifyAddBiz callback");
-
-            setTimeout(function() {
-              that.set('submitStatus', 'Submitted');
-             //  that.send('closeModal');
-             //  that.transitionToRoute('/');
-             that.send('openModal', 'submitBizEnd');
-
-            }, 500);
-          }
-        }
-    });
-
-  },
-  
 
   insertMap: function() {
     var myLatlng = new google.maps.LatLng(37.7699298, -122.4469157);
@@ -84,7 +53,6 @@ export default Ember.Component.extend({
     }
   },
 
-  /*
   createMarker: function(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
@@ -97,5 +65,4 @@ export default Ember.Component.extend({
       infowindow.open(map, this);
     });
   }.on('didInsertElement')
-  */
 });
