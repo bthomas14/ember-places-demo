@@ -6,9 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('places', { path: '/' }, function() {
-    this.route('list');
-  })
+  //this.route('results', { path: '/:query' });
+  this.route('results');
 });
 
 export default Router;

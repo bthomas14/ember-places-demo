@@ -1,0 +1,9 @@
+<h2>Results:</h2>
+<ul>
+  {{#each item in searchResults}}
+    <li>{{item.title}}</li>
+  {{else}}
+    No results.
+  {{/each}}
+</ul>
+{{outlet}}

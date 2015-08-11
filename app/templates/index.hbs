@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-5 col-sm-offset-1 search-container text-center">
+    <div class="h3" style="margin-top:0px;">Search with Google Places</div>
+
+    <form id="search-form" class="form-group">
+      {{view 'places-input' value=locationInput classNames="form-control input-lg col-sm-12 row-space-1 " placeholder="Type Location..." latLng=latLng}}
+      {{input type="text" class="hidden" value=latLng}}
+
+      {{#if showKeywordSearch}}
+        {{input type='text' value=query classNames="form-control input-lg col-sm-12 row-space-1" placeholder="Search for keyword"}}
+      {{/if}}
+      <!--<button type='submit' class="btn btn-success btn-sm btn-block" {{action 'search' keyword latLng}}>Go!</button>-->
+    </form>
+
+    {{places-search query=query latLng=latLng classNames="fade-in"}}
+
+  </div>
+
+  <div id="map-canvas" class="col-sm-4"></div>
+</div>

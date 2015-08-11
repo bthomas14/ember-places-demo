@@ -1,1 +1,33 @@
-<div id="map-canvas"></div>
+<div class="col-sm-12 row-space-top-2">
+  {{#if query}}
+    <div class="h4 text-center">Search Results:</div>
+    <hr>
+    <ol class="text-left">
+      {{#each item in resultList}}
+      <li>
+        <div class="block"><strong>{{item.name}}</strong></div>
+        {{item.photos}}
+        <img {{bind-attr src='item.photos'}} />
+        <div>{{item.formatted_address}}</div>
+        <div><b>Rating:</b> {{item.rating}}</div>
+        <div>
+          <strong>Categories</strong>
+          <ul class="list-inline">
+          {{#each type in item.types}}
+            <li>{{type}}, </li>
+          {{/each}}
+          </ul>
+        </div>
+      </li>
+      <hr>
+      {{else}}
+        Sorry, no results found.
+      {{/each}}
+    </ol>
+  {{/if}}
+</div>
+
+<!--<div class="col-md-6 col-sm-12">
+  <div id="map-canvas"></div>
+</div>-->
+{{outlet}}
