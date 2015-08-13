@@ -6,10 +6,9 @@
       {{#each item in resultList}}
       <li>
         <div class="block"><strong>{{item.name}}</strong></div>
-        {{item.photos}}
-        <img {{bind-attr src='item.photos'}} />
         <div>{{item.formatted_address}}</div>
-        <div><b>Rating:</b> {{item.rating}}</div>
+        <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+
         <div>
           <strong>Categories</strong>
           <ul class="list-inline">
@@ -20,6 +19,7 @@
         </div>
       </li>
       <hr>
+
       {{else}}
         Sorry, no results found.
       {{/each}}

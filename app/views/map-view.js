@@ -1,7 +1,7 @@
 import Ember from 'ember';
 /* global google */
 
-export default Ember.Component.extend({
+export default Ember.View.extend({
   map: null,
   service: null,
   geocoder: null,
@@ -32,14 +32,12 @@ export default Ember.Component.extend({
       //right: "12px"
     });
   },
-
   searchQuery: function() {
     console.log('in searchQuery()');
     var bounds = new google.maps.LatLngBounds();
     var map = this.get('map');
-    var res = new Array();
+    var res = [];
     var location = this.get('latLng');
-    var that = this;
 
     var request = {
       radius: '10',
@@ -47,7 +45,7 @@ export default Ember.Component.extend({
       location: new google.maps.LatLng(location.G, location.K)
     };
 
-    this.get('service').textSearch(request, function(results, status) {
+    return this.get('service').textSearch(request, function(results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         console.log("textSearch successful!");
 
@@ -69,17 +67,17 @@ export default Ember.Component.extend({
             icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
           });
         });
-
-        that.set('resultList', res);
+        //that.set('resultList', res);
 
       } else {
         console.log("textSearch was not successful for the following reason: " + status);
       }
     });
-  }.observes('query'),
+
+    //that.set('resultList', res);
+  }.property('query'),
 
   resizeMap: function() {
-    console.log("in resizeMap()")
     var map = this.get('map');
     var bounds = new google.maps.LatLngBounds();
     var location = this.get('latLng');
@@ -89,8 +87,8 @@ export default Ember.Component.extend({
     map.fitBounds(bounds);
 
     // resize trigger: necessary?
-    //google.maps.event.trigger(map, 'resize');
-    //map.setZoom(map.getZoom());
+    google.maps.event.trigger(map, 'resize');
+    map.setZoom(map.getZoom());
 
     // Adjust zoom
     var zoom = map.getZoom();
@@ -98,17 +96,63 @@ export default Ember.Component.extend({
     map.setZoom(zoom > 12 ? 12 : zoom);
   }.observes('latLng', 'resultList.@each'),
 
-  /*highlightMarker: function() {
-    console.log('markerId ' + this.get('controller').get('selectedMarker') + ' was updated');
-    // loop through markers array, and where id matches that of selectedMarker id
-    // replace red marker with yellow. Otherwise, marker will be red
-    for (var key in this.markers) {
-      if (key === this.get('controller').get('selectedMarker')) {
-        this.markers[key].set('icon', 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png');
-      } else {
-        this.markers[key].set('icon', 'https://maps.google.com/mapfiles/ms/icons/red-dot.png');
-      }
-    }
-  }.observes('controller.selectedMarker') // watch for selectedMarker change on regionController*/
+  /*rerenderMap: function() {
+    var results = this.get('resultList');
+    var map = this.get('map');
+    var bounds = new google.maps.LatLngBounds();
+    var locs = [];
+    var that = this;
+    var markers = {};
 
+    if(results) {
+      results.forEach(function(place, i) {
+        that.get('geocoder').geocode({ 'address': place.formatted_address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            console.log("geocoder successful!");
+
+            // pass in lat & lng from results array for each place location & push on to locs array
+            var loc = new google.maps.LatLng(results[0].geometry.location.G, results[0].geometry.location.K);
+            locs.push(loc);
+
+            // Fit the latlng to map bounds
+            bounds.extend(loc);
+            map.fitBounds(bounds);
+
+            // create a marker for the current place lat & lng
+            var marker = new google.maps.Marker({
+              position: loc,
+              map: map,
+              scrollwheel: false,
+              draggable: false,
+              title: place.name,
+              icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+            });
+
+            // set markers array item with index = place id to current marker
+            //that.markers[place.get('id')] = marker;
+
+            //console.log("place " + i + ": " + place.get('name'));
+          } else {
+            console.log("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      });
+
+
+      // resize trigger: necessary?
+      google.maps.event.trigger(map, 'resize');
+      map.setZoom(map.getZoom());
+    } else {
+      var location = this.get('latLng');
+
+      // Fit the latlng to map bounds
+      bounds.extend(new google.maps.LatLng(location.G, location.K));
+      map.fitBounds(bounds);
+    }
+    // Adjust zoom
+    var zoom = map.getZoom();
+    console.log("zoom is " + zoom);
+    map.setZoom(zoom > 12 ? 12 : zoom);
+
+  }.observes('resultList.@each'),*/
 });

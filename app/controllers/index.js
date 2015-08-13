@@ -6,7 +6,9 @@ export default Ember.Controller.extend({
   searchTerm: null,
   searchLocation: null,
   latLng: null,
+
   showKeywordSearch: function() {
+    console.log('in showKeywordSearch');
     if(this.get('latLng')) {
       return true;
     }
@@ -14,10 +16,8 @@ export default Ember.Controller.extend({
 
   actions: {
     search: function(keyword, latLng) {
-      //var controller = this.controllerFor('index');
       this.set('searchTerm', keyword);
-      this.set('searchLocation', latLng);
-      console.log('searchTerm => ' + keyword + ", searchLocation => " + latLng);
+      //this.set('searchLocation', latLng);
     }
   }
 });
