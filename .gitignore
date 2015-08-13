@@ -5,13 +5,37 @@
 /tmp
 
 # dependencies
-/node_modules
-/bower_components
+node_modules/
+bower_components/
 
 # misc
+docs
+lib/*/tests/all.js
+lib/*/tests/qunit*
+lib/bundler/man
+pkg
+rdoc
+spade-boot.js
+spec/reports
+test/tmp
+test/version_tmp
+test_*.html
+/tests/ember-tests.js
+tmp
+tmp*.gem
+tmp.bpm
+tmp.spade
+tests/source
 /.sass-cache
 /connect.lock
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
+.bundle
+.config
+.ember-cli
+*.bpkg
+*.gem
+*.rbc
+.DS_Store
