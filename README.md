@@ -1,7 +1,6 @@
 # Places
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A simple demo app using Ember CLI and the google places API to return a list of mapped results.
 
 ## Prerequisites
 
