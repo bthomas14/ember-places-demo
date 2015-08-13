@@ -1,6 +1,7 @@
 # Places
 
 A simple demo app using Ember CLI and the google places API to return a list of mapped results.
+See the demo here: https://gplace.herokuapp.com/
 
 ## Prerequisites
 
