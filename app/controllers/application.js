@@ -13,9 +13,9 @@ export default Ember.Controller.extend({
   }.property('latLng'),
 
   actions: {
-    search: function(keyword, latLng) {
+    /*search: function(keyword, latLng) {
       this.set('isDirty', true);
       this.set('searchTerm', keyword);
-    }
+    }*/
   }
 });

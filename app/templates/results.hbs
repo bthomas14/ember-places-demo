@@ -1,11 +1,9 @@
 
-
-<div class="col-sm-8 row-space-top-2">
-  {{#if resultList}}
+  {{#if model}}
     <div class="h4 text-center">Search Results:</div>
     <hr>
     <ol class="text-left">
-      {{#each item in resultList}}
+      {{#each item in model}}
       <li {{action 'hover' item on="mouseEnter"}}>
         <div class="block"><strong>{{item.name}}</strong></div>
         <div>{{item.formatted_address}}</div>
@@ -27,7 +25,6 @@
       {{/each}}
     </ol>
   {{/if}}
-</div>
 
 
 {{outlet}}

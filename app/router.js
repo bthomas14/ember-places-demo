@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  //this.route('results', { queryParams: ['keyword', 'location'] });
+  this.route('results', { queryParams: ['keyword', 'lat', 'lng'] });
 });
 
 export default Router;

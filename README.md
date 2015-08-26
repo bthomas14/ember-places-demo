@@ -1,6 +1,6 @@
 # GPlaces-Demo
 
-A little web app using Ember CLI and the google places library to return a list of place results.
+A little web app using Ember CLI and the Google places library to return a list of place results.
 See the demo here: https://gplace.herokuapp.com/
 
 

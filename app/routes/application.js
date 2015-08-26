@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  /*actions: {
+  actions: {
     search: function(keyword, latLng) {
-      //this.set('searchTerm', keyword);
-
-      console.log("in search: " + keyword + ", " + location);
+      console.log("in search: " + keyword + ", " + latLng);
       var kw = keyword ? keyword : "";
-      var loc = latLng ? latLng : "noloc";
+      //var loc = latLng ? latLng : "noloc";
+      var lat = latLng.G;
+      var lng = latLng.K;
 
-      this.transitionTo('results', { queryParams: { keyword: kw, location: loc } });
+      this.transitionTo('results', { queryParams: { keyword: kw, lat: lat, lng: lng } });
     }
-  }*/
+  }
 });

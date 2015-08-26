@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['keyword', 'location']
+  queryParams: ['keyword', 'lat', 'lng']
 });
