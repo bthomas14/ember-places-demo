@@ -32,7 +32,7 @@ export default Ember.View.extend({
       //right: "12px"
     });
   },
-  searchQuery: function() {
+  /*searchQuery: function() {
     console.log('in searchQuery()');
     var bounds = new google.maps.LatLngBounds();
     var map = this.get('map');
@@ -94,9 +94,9 @@ export default Ember.View.extend({
     var zoom = map.getZoom();
     console.log("zoom is " + zoom);
     map.setZoom(zoom > 12 ? 12 : zoom);
-  }.observes('latLng', 'resultList.@each'),
+  }.observes('latLng', 'resultList.@each'),*/
 
-  /*rerenderMap: function() {
+  rerenderMap: function() {
     var results = this.get('resultList');
     var map = this.get('map');
     var bounds = new google.maps.LatLngBounds();
@@ -154,5 +154,5 @@ export default Ember.View.extend({
     console.log("zoom is " + zoom);
     map.setZoom(zoom > 12 ? 12 : zoom);
 
-  }.observes('resultList.@each'),*/
+  }.observes('resultList.@each'),
 });

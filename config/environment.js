@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'places',
+    modulePrefix: 'gplaces',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

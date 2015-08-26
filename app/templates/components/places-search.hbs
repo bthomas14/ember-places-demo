@@ -1,33 +1,37 @@
-<div class="col-sm-12 row-space-top-2">
-  {{#if resultList}}
-    <div class="h4 text-center">Search Results:</div>
-    <hr>
-    <ol class="text-left">
-      {{#each item in resultList}}
-      <li>
-        <div class="block"><strong>{{item.name}}</strong></div>
-        <div>{{item.formatted_address}}</div>
-        <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+<div class="row">
 
-        <div>
-          <strong>Categories</strong>
-          <ul class="list-inline">
-          {{#each type in item.types}}
-            <li>{{type}}, </li>
+  <div class="col-md-7 col-sm-12" id="results-container">
+
+    {{#if resultList}}
+      <div class="box results">
+        <!--<div class="h4 text-center results-header">Search Results:</div>-->
+        <ol class="text-left">
+          {{#each item in resultList}}
+          <div {{action 'hover' item on="mouseEnter"}} class="result">
+            <li>
+              <div class="block"><strong>{{item.name}}</strong></div>
+              <div>{{item.formatted_address}}</div>
+              <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+
+              <div>
+                <strong>Categories:</strong>
+                  {{{format-categories item.types}}}
+              </div>
+            </li>
+          </div>
+
+          {{else}}
+            Sorry, no results found.
           {{/each}}
-          </ul>
-        </div>
-      </li>
-      <hr>
+        </ol>
+      </div>
+    {{/if}}
 
-      {{else}}
-        Sorry, no results found.
-      {{/each}}
-    </ol>
-  {{/if}}
+  </div>
+
+    <div class="col-md-5 col-sm-12 pull-right no-padding">
+      <div id="map-canvas" name="map-canvas" {{bind-attr class="isDirty:visible:invisible"}}></div>
+    </div>
 </div>
 
-<!--<div class="col-md-6 col-sm-12">
-  <div id="map-canvas"></div>
-</div>-->
 {{outlet}}

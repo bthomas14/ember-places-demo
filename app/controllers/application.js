@@ -1,11 +1,9 @@
-//import ajax from 'ic-ajax';
 import Ember from 'ember';
-/* global google */
 
 export default Ember.Controller.extend({
   searchTerm: null,
-  searchLocation: null,
   latLng: null,
+  isDirty: false,
 
   showKeywordSearch: function() {
     console.log('in showKeywordSearch');
@@ -16,8 +14,8 @@ export default Ember.Controller.extend({
 
   actions: {
     search: function(keyword, latLng) {
+      this.set('isDirty', true);
       this.set('searchTerm', keyword);
-      //this.set('searchLocation', latLng);
     }
   }
 });

@@ -1,5 +1,5 @@
 {
-  "name": "places",
+  "name": "gplaces",
   "dependencies": {
     "jquery": "^1.11.1",
     "ember": "1.11.0",

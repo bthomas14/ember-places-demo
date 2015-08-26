@@ -1,7 +1,9 @@
-# Places
+# GPlaces-Demo
 
-A simple demo app using Ember CLI and the google places API to return a list of mapped results.
+A little web app using Ember CLI and the google places library to return a list of place results.
 See the demo here: https://gplace.herokuapp.com/
+
+
 
 ## Prerequisites
 
@@ -50,4 +52,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

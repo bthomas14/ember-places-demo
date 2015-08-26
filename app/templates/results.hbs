@@ -1,0 +1,33 @@
+
+
+<div class="col-sm-8 row-space-top-2">
+  {{#if resultList}}
+    <div class="h4 text-center">Search Results:</div>
+    <hr>
+    <ol class="text-left">
+      {{#each item in resultList}}
+      <li {{action 'hover' item on="mouseEnter"}}>
+        <div class="block"><strong>{{item.name}}</strong></div>
+        <div>{{item.formatted_address}}</div>
+        <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+
+        <div>
+          <strong>Categories</strong>
+          <ul class="list-inline">
+          {{#each type in item.types}}
+            <li>{{type}}, </li>
+          {{/each}}
+          </ul>
+        </div>
+      </li>
+      <hr>
+
+      {{else}}
+        Sorry, no results found.
+      {{/each}}
+    </ol>
+  {{/if}}
+</div>
+
+
+{{outlet}}

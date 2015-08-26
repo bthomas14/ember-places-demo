@@ -5,20 +5,54 @@
 
 
 #map-canvas {
-  width: 41.66666667%;
+  //width: 41.66666667%;
+  width: 100%;
   height: 500px;
   //opacity: 0.7;
 }
 
-.search-container {
-  //position: absolute;
-  //top: 20px;
+.box {
   background-color: #fff;
-  border: 1px solid #eee;
-  padding: 40px;
+  border: 1px solid #ccc;
+  padding: 0px;
 }
+.box.search {
+  padding: 30px;
+}
+.box.results {
+  margin-left: -15px;
+}
+.search-inner {
+  width: 60%;
+  margin: 0px auto;
+}
+.no-padding {
+  padding: 0px;
+}
+
 ol {
   padding-left: 0px;
+}
+.results-header {
+  border-bottom: 1px solid #ccc;
+  margin: 0px;
+  padding: 10px;
+}
+.result {
+  padding: 20px;
+  padding-left: 30px;
+  border-bottom: 1px solid #ccc;
+}
+.categories {
+  margin-top: 5px;
+}
+categories:last-of-type:after {
+  content: ","
+}
+.result:hover,
+.results:active,
+.results:focus {
+  background-color: #eee;
 }
 .actions {
     background-color: #FFFFFF;
