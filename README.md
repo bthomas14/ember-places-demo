@@ -1,6 +1,7 @@
-# GPlaces-Demo
+# Gplaces
 
-A little web app using Ember CLI and the google places library to return a list of place results.
+A little web app using Ember CLI and the google places library to return a list of place results. I used Bootstrap for some quick styling. Since I'm not using a paid version of the Google Maps API, the results returned are automatically limited to 20.
+Instead of adding some pagination, I felt the most useful user experience would be a map that moves down with the user on scroll events.   
 See the demo here: https://gplace.herokuapp.com/
 
 

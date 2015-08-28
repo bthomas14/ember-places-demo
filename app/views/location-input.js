@@ -2,38 +2,31 @@ import Ember from 'ember';
 /* global google */
 
 export default Ember.TextField.extend({
-  needs: ['index'],
   type: 'text',
-  autocomplete: null,
-  latLng: null,
+
 
   didInsertElement: function() {
-    //this._super();
-
     console.log('in places-input view');
     var options = {
       types: ['geocode'],
-      //types: ['(cities)'],
-      //componentRestrictions: {country: 'us'}
     };
     var that = this;
-    this.set('autocomplete', new google.maps.places.Autocomplete(this.$()[0], options));
-    google.maps.event.addListener(this.get('autocomplete'), 'place_changed', function() {
-      return that.onPlaceChanged();
+    var autocomplete = new google.maps.places.Autocomplete(this.$()[0], options);
+
+    // Listen for user to select an location from the autocomplete dropdown
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      return that.onPlaceSelected(autocomplete);
     });
   },
 
   // When the user selects a city, get the place details for the city and
   // zoom the map in on the city.
-   onPlaceChanged: function() {
-      var place = this.get('autocomplete').getPlace();
-      if (place) {
-        this.set('value', place.formatted_address);
-        this.set('latLng', place.geometry.location);
-        //map.panTo(place.geometry.location);
-        //map.setZoom(15);
-        //search();
-      }
-  }
+  onPlaceSelected: function(autocomplete) {
+    var place = autocomplete.getPlace();
 
+    if (place) {
+      this.set('value', place.formatted_address);
+      this.set('latLng', place.geometry.location);
+    }
+  }
 });

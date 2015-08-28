@@ -18,4 +18,4 @@ export function starRating(rating) {
   return stars;
 }
 
-export default Ember.HTMLBars.makeBoundHelper(starRating);
+export default Ember.Helper.helper(starRating);

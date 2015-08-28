@@ -12,6 +12,12 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+
+    APP: {
+      // Here you can pass flags/options to your application instance
+      // when it is created
+    },
+
     contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
     contentSecurityPolicy: {
       'default-src': "'self' 'unsafe-eval' http://localhost:4200 *.google.com",
@@ -21,20 +27,15 @@ module.exports = function(environment) {
       'img-src': "'self' *.googleapis.com *.gstatic.com *.google.com",
       'style-src': "'self' 'unsafe-inline' *.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"
-    },
-
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
     }
   };
 
   if (environment === 'development') {
-    //ENV.APP.LOG_RESOLVER = true;
-    //ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    //ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    //ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+     ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {

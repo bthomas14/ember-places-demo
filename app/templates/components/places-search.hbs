@@ -4,21 +4,20 @@
 
     {{#if resultList}}
       <div class="box results">
-        <!--<div class="h4 text-center results-header">Search Results:</div>-->
         <ol class="text-left">
-          {{#each item in resultList}}
-          <div {{action 'hover' item on="mouseEnter"}} class="result">
-            <li>
-              <div class="block"><strong>{{item.name}}</strong></div>
-              <div>{{item.formatted_address}}</div>
-              <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+          {{#each resultList as |item|}}
 
-              <div>
-                <strong>Categories:</strong>
-                  {{{format-categories item.types}}}
+              <div {{action 'click' item}} name="{{item.id}}" class="result">
+                <li class={{if isSelected 'active'}}>
+                  <div class="block"><strong>{{item.name}}</strong></div>
+                  <div>{{item.formatted_address}}</div>
+                  <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+                  <div>
+                    <strong>Categories:</strong>
+                      {{format-categories item.types}}
+                  </div>
+                </li>
               </div>
-            </li>
-          </div>
 
           {{else}}
             Sorry, no results found.
@@ -29,8 +28,8 @@
 
   </div>
 
-    <div class="col-md-5 col-sm-12 pull-right no-padding">
-      <div id="map-canvas" name="map-canvas" {{bind-attr class="isDirty:visible:invisible"}}></div>
+    <div class="{{if showMap 'visible' 'invisible'}} col-md-5 col-sm-12 pull-right no-padding">
+      <div id="map-canvas" name="map-canvas"></div>
     </div>
 </div>
 

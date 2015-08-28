@@ -5,8 +5,6 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
-  //this.route('results', { queryParams: ['keyword', 'location'] });
-});
+Router.map(function() {});
 
 export default Router;

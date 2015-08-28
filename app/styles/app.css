@@ -32,6 +32,7 @@
 
 ol {
   padding-left: 0px;
+  margin-bottom: 0px;
 }
 .results-header {
   border-bottom: 1px solid #ccc;
@@ -43,17 +44,20 @@ ol {
   padding-left: 30px;
   border-bottom: 1px solid #ccc;
 }
+.result.active {
+  background-color: #eee;
+}
+.result > li {
+  cursor: pointer;
+}
 .categories {
   margin-top: 5px;
 }
 categories:last-of-type:after {
   content: ","
 }
-.result:hover,
-.results:active,
-.results:focus {
-  background-color: #eee;
-}
+
+
 .actions {
     background-color: #FFFFFF;
     bottom: 30px;
