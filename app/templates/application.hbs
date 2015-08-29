@@ -5,13 +5,13 @@
         <div class="h3" style="margin-top:0px;">Search with Google Places</div>
 
         <form id="search-form" class="form-group">
-          {{view 'location-input' value=location latLng=latLng classNames="form-control input-lg col-sm-12 row-space-1 " placeholder="What's your location?"}}
-          {{input type="text" class="hidden" value=latLng}}
+          {{view 'location-input' id="location" value=location latLng=latLng classNames="form-control input-lg col-sm-12 row-space-1 " placeholder="What's your location?"}}
+          {{input type="text" id="latLng" class="hidden" value=latLng}}
           {{#unless showKeywordSearch}}
             <div class="text-warning">Please select a location from the autocomplete dropdown.</div>
           {{/unless}}
           {{#if showKeywordSearch}}
-            {{input type="text" value=keyword class="form-control input-lg col-sm-12 row-space-1" placeholder="What are you looking for?"}}
+            {{input type="text" id="keyword" value=keyword class="form-control input-lg col-sm-12 row-space-1" placeholder="What are you looking for?"}}
           {{/if}}
         </form>
 

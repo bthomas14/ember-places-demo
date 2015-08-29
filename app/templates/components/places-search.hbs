@@ -11,7 +11,13 @@
                 <li class={{if isSelected 'active'}}>
                   <div class="block"><strong>{{item.name}}</strong></div>
                   <div>{{item.formatted_address}}</div>
-                  <div><b>Rating:</b> {{{star-rating item.rating}}}</div>
+                  <div><b>Rating:</b>
+                    {{#if item.rating}}
+                      {{{star-rating item.rating}}}
+                    {{else}}
+                      <em>no reviews</em>
+                    {{/if}}
+                  </div>
                   <div>
                     <strong>Categories:</strong>
                       {{format-categories item.types}}

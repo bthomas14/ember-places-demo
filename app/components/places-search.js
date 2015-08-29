@@ -83,10 +83,11 @@ export default Ember.Component.extend({
             pid: item.id,
             name: item.name,
             location: loc,
+            formatted_address: item.formatted_address,
             rating: item.rating,
             types: item.types,
             marker: marker
-          }
+          };
           res.pushObject(thisItem);
           console.log("place " + i + ": " + item.name);
 
@@ -110,7 +111,6 @@ export default Ember.Component.extend({
   }.observes('query'),
 
   onMarkerClick: function(marker) {
-    var that = this;
     var markers = this.get('markers');
     // Remove styling from any previously selected markers
     for(var i = 0; i < markers.length; i++) {
@@ -119,7 +119,6 @@ export default Ember.Component.extend({
     Ember.$(".result").removeClass('active');
 
     // Add selected styling to clicked item
-    debugger;
     marker.set('icon', 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png');
     Ember.$('html,body').animate({
       scrollTop: Ember.$("div[name='" + marker.id + "']").offset().top,
@@ -141,7 +140,6 @@ export default Ember.Component.extend({
   // that of selectedMarker id replace red marker with yellow. Otherwise, marker will be red.
   highlightMarker: function() {
     var markers = this.get('markers');
-    debugger;
     for(var i = 0; i < markers.length; i++) {
       if (i === this.get('selectedMarker').id) {
         markers[i].set('icon', 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png');

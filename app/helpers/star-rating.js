@@ -1,16 +1,16 @@
 import Ember from 'ember';
 
 export function starRating(rating) {
-  var maxRating = 5;
+  var maxRating = 4;
   var stars = "";
   if(rating) {
-    for(var i = 1; i <= maxRating; i++) {
-      if(i < rating || (i - rating) < 0.5) {
-        stars += "<span class='glyphicon glyphicon-star'></span>";
-      } else if ((i - rating) >= 0.5) {
-        stars += "<span class='glyphicon glyphicon-star-half'></span>";
+    for(var i = 0; i <= maxRating; i++) {
+      if((rating - i) >= 1) {
+        stars += "<span class='fa fa-star'></span>";
+      } else if ((rating - i) >= 0.5) {
+        stars += "<span class='fa fa-star-half-o'></span>";
       } else {
-        stars += "<span class='glyphicon glyphicon-star-empty'></span>";
+        stars += "<span class='fa fa-star-o'></span>";
       }
 
     }
